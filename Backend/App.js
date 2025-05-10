@@ -12,7 +12,7 @@ const server = http.createServer(app);
 
 // CORS configuration
 app.use(cors({
-    origin: 'http://localhost:5173', // Your frontend URL
+    origin: 'http://localhost:5175', // Your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
