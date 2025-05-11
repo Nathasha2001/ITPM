@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaEdit, FaTrash, FaShoppingBasket, FaPlus, FaSearch, FaFileDownload, FaPrint, FaFilePdf, FaFileExcel } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaShoppingBasket, FaPlus, FaSearch, FaFileDownload, FaFileExcel } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 
@@ -10,7 +10,6 @@ function ShoppingListView() {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredItems, setFilteredItems] = useState([]);
-    const [showReportModal, setShowReportModal] = useState(false);
     const [success, setSuccess] = useState(null);
     const reportTableRef = useRef(null);
 
@@ -71,9 +70,6 @@ function ShoppingListView() {
     };
 
     const generateReport = (reportType) => {
-        // Close the modal
-        setShowReportModal(false);
-        
         // Prepare report data
         const itemsToReport = searchTerm ? filteredItems : items;
         const reportTitle = `Shopping List Report - ${new Date().toLocaleDateString()}`;
@@ -85,14 +81,6 @@ function ShoppingListView() {
                 break;
             case 'print':
                 printReport(itemsToReport, reportTitle, totalAmount);
-                break;
-            case 'pdf':
-                alert('PDF generation would require a PDF library integration.');
-                // Implementation would require a PDF library like jsPDF
-                break;
-            case 'excel':
-                alert('Excel generation would require an Excel library integration.');
-                // Implementation would require an Excel library like SheetJS
                 break;
             default:
                 break;
@@ -192,7 +180,7 @@ function ShoppingListView() {
     );
     
     if (error) return (
-        <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p感情-4 mx-auto max-w-6xl mt-8 rounded shadow-md">
+        <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mx-auto max-w-6xl mt-8 rounded shadow-md">
             <p className="font-bold">Error</p>
             <p>{error}</p>
         </div>
@@ -237,11 +225,11 @@ function ShoppingListView() {
                         </div>
                     </div>
                     
-                    {/* Content with Report Options in the right corner */}
+                    {/* Content */}
                     <div className="p-6">
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col">
                             {/* Main Content - Shopping List Table */}
-                            <div className={filteredItems.length > 0 ? "md:w-3/4 pr-0 md:pr-6" : "w-full"}>
+                            <div className="w-full">
                                 {filteredItems.length === 0 ? (
                                     <div className="text-center py-12">
                                         {items.length === 0 ? (
@@ -354,15 +342,14 @@ function ShoppingListView() {
                                 )}
                             </div>
                             
-                            {/* Report Generation Panel in Right Corner */}
+                            {/* Report Generation Panel at Bottom Right */}
                             {items.length > 0 && (
-                                <div className="md:w-1/4 mt-6 md:mt-0">
-                                    <div className="bg-gray-50 rounded-xl p-4 shadow-md">
+                                <div className="mt-6 flex justify-end">
+                                    <div className="w-full md:w-1/3 bg-gray-50 rounded-xl p-4 shadow-md">
                                         <h3 className="text-lg font-semibold text-blue-800 mb-4 flex items-center">
                                             <FaFileDownload className="w-5 h-5 mr-2" />
                                             Report Options
                                         </h3>
-
                                         <div className="grid grid-cols-1 gap-3">
                                             <button
                                                 onClick={() => generateReport('csv')}
@@ -371,19 +358,13 @@ function ShoppingListView() {
                                                 <FaFileExcel className="w-4 h-4 mr-3" />
                                                 CSV Export
                                             </button>
-                                            
                                             <button
                                                 onClick={() => generateReport('print')}
                                                 className="flex items-center justify-left bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 px-4 rounded-lg transition duration-150"
                                             >
                                                 <FaFileDownload className="w-4 h-4 mr-3" />
-                                                Download Report
+                                                Print Report
                                             </button>
-                                        </div>
-                                        <div className="mt-4 pt-3 border-t border-gray-200 text-xs text-gray-500">
-                                            <p>Items: {searchTerm ? filteredItems.length : items.length}</p>
-                                            <p>Total Amount: Rs. {calculateTotal()}</p>
-                                            <p className="mt-2">Last updated: {new Date().toLocaleTimeString()}</p>
                                         </div>
                                     </div>
                                 </div>
