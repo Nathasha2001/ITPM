@@ -349,9 +349,7 @@ function ShoppingListView() {
                                         <FaFileDownload className="w-5 h-5 mr-2" />
                                         Report Options
                                     </h3>
-                                    <p className="text-sm text-gray-600 mb-4">
-                                        Generate a report of your {searchTerm ? 'filtered' : 'complete'} shopping list in various formats.
-                                    </p>
+
                                     <div className="grid grid-cols-1 gap-3">
                                         <button
                                             onClick={() => generateReport('csv')}
@@ -365,24 +363,8 @@ function ShoppingListView() {
                                             onClick={() => generateReport('print')}
                                             className="flex items-center justify-left bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 px-4 rounded-lg transition duration-150"
                                         >
-                                            <FaPrint className="w-4 h-4 mr-3" />
-                                            Print Report
-                                        </button>
-                                        
-                                        <button
-                                            onClick={() => generateReport('pdf')}
-                                            className="flex items-center justify-left bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition duration-150"
-                                        >
-                                            <FaFilePdf className="w-4 h-4 mr-3" />
-                                            PDF Export
-                                        </button>
-                                        
-                                        <button
-                                            onClick={() => generateReport('excel')}
-                                            className="flex items-center justify-left bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition duration-150"
-                                        >
-                                            <FaFileExcel className="w-4 h-4 mr-3" />
-                                            Excel Export
+                                            <FaFileDownload className="w-4 h-4 mr-3" />
+                                            Download Report
                                         </button>
                                     </div>
                                     <div className="mt-4 pt-3 border-t border-gray-200 text-xs text-gray-500">
