@@ -4,7 +4,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-indigo-50">
       {/* Navigation Bar */}
       <nav className="bg-white shadow-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,8 @@ const Navbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16 Installed components: react@18.2.0, react-dom@18.2.0, react-icons@5.3.0, react-router-dom@6.26.2, tailwindcss@3.4.13
+" />
                 </svg>
                 {/* Close Icon */}
                 <svg
@@ -92,7 +93,7 @@ const Navbar = () => {
           Manage Your HomeStock with Ease
         </h2>
         <p className="text-lg sm:text-xl text-gray-600 text-center mb-8 max-w-2xl">
-          Track your inventory, plan your shopping, analyze costs and create meal plans seamlessly with HomeStock.
+          Track your inventory, plan your shopping, analyze costs, and create meal plans seamlessly with HomeStock.
         </p>
         <a
           href="/get-started"
