@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaEdit, FaTrash, FaShoppingBasket, FaPlus, FaSearch, FaFileDownload, FaPrint, FaFilePdf, FaFileExcel } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './navbar';
 
 function ShoppingListView() {
     const navigate = useNavigate();
@@ -193,7 +194,10 @@ function ShoppingListView() {
     );
 
     return (
+        <div>
+             <Navbar/>
         <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-50 p-4 sm:p-6 md:p-8">
+           
             <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                 {/* Header */}
                 <div className="bg-blue-700 text-white p-6 flex flex-col sm:flex-row justify-between items-center">
@@ -378,7 +382,7 @@ function ShoppingListView() {
                     </div>
                 </div>
             </div>
-            
+            </div>
             {/* Footer */}
             <div className="max-w-6xl mx-auto text-center text-blue-400 text-sm mt-8">
                 <p>Shopping List Manager • {new Date().getFullYear()}</p>
