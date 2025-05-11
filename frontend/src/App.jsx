@@ -15,7 +15,9 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-100">
         <Routes>
-          <Route path="/"  element={<Navbar />}/>
+
+          <Route path="/"  element={<></>}/>
+          <Route path="/navbar"  element={<Navbar />}/>
           <Route path='/shoppinglist' element={<ShoppingListView />}/>
           <Route path="/add" element={<AddList />} />
           <Route path="/update/:id" element={<UpdateItem />} />
